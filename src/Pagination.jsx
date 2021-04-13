@@ -1,28 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-
-// import { withRouter } from 'react-router-dom';
-import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableFooter from "@material-ui/core/TableFooter";
+import React from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardActionArea from "@material-ui/core/CardActionArea";
-
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
-
-import Box from "@material-ui/core/Box";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-import CancelIcon from "@material-ui/icons/Cancel";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import { Context } from "./stateManagement/Store";
-
 import IconButton from "@material-ui/core/IconButton";
 import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";

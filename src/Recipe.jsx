@@ -1,27 +1,11 @@
 import React, { useState, useEffect ,useContext} from "react";
-
-// import { withRouter } from 'react-router-dom';
 import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableFooter from "@material-ui/core/TableFooter";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
-
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
-
-import Box from "@material-ui/core/Box";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CancelIcon from "@material-ui/icons/Cancel";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import {Context} from './stateManagement/Store'
 
 const useStyles = makeStyles({
   media: {
@@ -66,28 +50,7 @@ const useStyles = makeStyles({
 const Recipe = props => {
   const classes = useStyles();
   const { match } = props;
-  // const [, dispatch] = useStateValue();
-  const [state, dispatch] = useContext(Context);
 
-  console.log(state,'st')
-  
-  //   const dat = {
-  //     aggregateLikes: 1,
-
-  //     image: "https://spoonacular.com/recipeImages/638002-556x370.jpg",
-
-  //     instructions:
-  //       "In a medium-sized bowl, mix salt, pepper and flour together.↵Wash chicken and remove excess skin. Dredge in flour mixture and shake off excess.↵Heat oil is a large non-stick skillet over medium-high heat. Add chicken and brown on all sides.↵Remove from the pan and drain on paper towels.↵To the same skillet add the onion and garlic and stir until onion is soft, but not browned. Next, add red pepper and mushrooms; cook, stirring occasionally until softened.↵Add tomatoes, white wine and oregano and cook until alcohol has burned off; 3-5 minutes.↵Return chicken to skillet, cover and simmer on low for one hour.",
-  //     title: "Chicken Cacciatore",
-  //     vegan: true,
-  //     vegetarian: false,
-  //     veryHealthy: false,
-  //     veryPopular: false,
-  //     weightWatcherSmartPoints: 11,
-  //     glutenFree: false
-  //   };
-
-  //   console.log(props.match.params.ID, "props");
   const [recipe, setRecipe] = useState([]);
 
   // useEffect(() => {
@@ -181,7 +144,6 @@ const Recipe = props => {
           <CardMedia
             className={classes.media}
             image={recipe.image}
-            //image="https://spoonacular.com/recipeImages/638002-312x231.jpg"
             title="Recipe"
             component="img"
           />

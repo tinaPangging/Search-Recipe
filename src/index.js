@@ -10,10 +10,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Store from "./stateManagement/Store";
 
 ReactDOM.render(
-  // <React.StrictMode>
-  //   <Home />
-  // </React.StrictMode>,
-  // document.getElementById('root')
   <Store>
     <BrowserRouter>
       <App history={history} />
