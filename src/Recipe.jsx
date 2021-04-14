@@ -1,4 +1,4 @@
-import { useState,useEffect,useContext } from "react";
+import { useState,useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,7 +8,6 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Context } from "./stateManagement/Store";
 
 const useStyles = makeStyles({
   recipeTitle: {
@@ -42,7 +41,6 @@ const useStyles = makeStyles({
 const Recipe = props => {
   const classes = useStyles();
   const { match } = props;
-  const [state, dispatch] = useContext(Context);
   const [recipe, setRecipe] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
