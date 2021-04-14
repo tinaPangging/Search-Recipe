@@ -18,7 +18,7 @@ Project is created with:
 ### Setup
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To run this project, run the commands line mentioned below:
+To run this project, run the commands mentioned below:
 ```
 npm install
 npm install @material-ui/core
