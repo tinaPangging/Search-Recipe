@@ -5,10 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 import Results from "./Results";
-
 import { makeStyles } from "@material-ui/core/styles";
 import { Context } from "./stateManagement/Store";
-
 import FilterCuisine from "./FilterCuisine";
 
 const useStyles = makeStyles({
@@ -25,26 +23,26 @@ const Home = props => {
 
   const onSearch = () => {
     if (state && state.inputValue) {
-      // axios
-      //   .get(
-      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
-      //   )
-      //   .then(res => {
-      //     console.log(res.data);
-      //     dispatch({
-      //       type: "SET_POSTS",
-      //       data: res.data,
-      //       pageNumber: 0,
-      //       cuisine: "Select cuisine",
-      //       selectedIndex: 0,
-      //       enter: true,
-      //       inputValue: state.inputValue
-      //     });
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //     dispatch({ type: "SET_ERROR", data: error });
-      //   });
+      axios
+        .get(
+          `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
+        )
+        .then(res => {
+          
+          dispatch({
+            type: "SET_POSTS",
+            data: res.data,
+            pageNumber: 0,
+            cuisine: "Select cuisine",
+            selectedIndex: 0,
+            enter: true,
+            inputValue: state.inputValue
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          dispatch({ type: "SET_ERROR", data: error });
+        });
     }
   };
 
@@ -53,7 +51,7 @@ const Home = props => {
       <Grid
         container
         justify="center"
-        style={{ paddingTop: 80, paddingLeft: 40, paddingRight: 40 }}
+        style={{ paddingTop: 50, paddingLeft: 40, paddingRight: 40 }}
       >
         <Grid xs={12} sm={6} item>
           <Grid
@@ -109,7 +107,11 @@ const Home = props => {
           />
         )}
 
-      {!isValid && <p style={{ color: "white" }}>No recipe found</p>}
+      {!isValid && (
+        <Grid container justify="center" style={{ color: "white" , paddingTop:20,fontFamily: "Papyrus",  fontWeight: "bold"}}>
+          Oops! No recipe found
+        </Grid>
+      )}
       {state.enter && (
         <FilterCuisine
           state={state}
@@ -118,6 +120,7 @@ const Home = props => {
           setIsValid={setIsValid}
         />
       )}
+
     </Grid>
   );
 };

@@ -45,19 +45,19 @@ const Recipe = props => {
 
   const [recipe, setRecipe] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=d533817c8f724f739cf8a6975796f939&includeNutrition=false`
-  //     )
-  //     .then(res => {
-  //       console.log(res.data);
-  //       setRecipe(res.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }, [match.params.ID]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=d533817c8f724f739cf8a6975796f939&includeNutrition=false`
+      )
+      .then(res => {
+        console.log(res.data);
+        setRecipe(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [match.params.ID]);
 
   const removeSpecialCharacter = string => {
     string = string.replace(/\u2013|\u2014/g, "");

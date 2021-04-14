@@ -6,7 +6,7 @@ import App from "./App";
 
 import history from "./utilities/History";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Store from "./stateManagement/Store";
 
 ReactDOM.render(

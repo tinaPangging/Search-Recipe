@@ -29,20 +29,34 @@ const useStyles = makeStyles({
 
 const Results = props => {
   const classes = useStyles();
-  const { testData, history, state,dispatch } = props;
+  const { testData, history, state, dispatch } = props;
   const theme = useTheme();
   const isXS = useMediaQuery(theme.breakpoints.down("xs"));
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     // dispatch({ type: "UPDATE_POST", pageNumber: newPage});
-    dispatch({ type: "SET_POSTS", data:state.data,cuisine: state.cuisine,selectedIndex: state.selectedIndex, pageNumber: newPage, enter: state.enter});
+    dispatch({
+      type: "SET_POSTS",
+      data: state.data,
+      cuisine: state.cuisine,
+      selectedIndex: state.selectedIndex,
+      pageNumber: newPage,
+      enter: state.enter
+    });
   };
 
   const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     // dispatch({ type: "UPDATE_POST", pageNumber: 0 });
-    dispatch({ type: "SET_POSTS", data:state.data,cuisine: state.cuisine,selectedIndex: state.selectedIndex, pageNumber: 0, enter: state.enter});
+    dispatch({
+      type: "SET_POSTS",
+      data: state.data,
+      cuisine: state.cuisine,
+      selectedIndex: state.selectedIndex,
+      pageNumber: 0,
+      enter: state.enter
+    });
   };
 
   return (
@@ -92,13 +106,15 @@ const Results = props => {
           </Grid>
         ))}
       </Grid>
-      <Pagination
-        testData={testData}
-        rowsPerPage={rowsPerPage}
-        handleChangePage={handleChangePage}
-        handleChangeRowsPerPage={handleChangeRowsPerPage}
-        page={state.pageNumber}
-      />
+      <Grid container justify="center" style={{ paddingTop:20}}>
+        <Pagination
+          testData={testData}
+          rowsPerPage={rowsPerPage}
+          handleChangePage={handleChangePage}
+          handleChangeRowsPerPage={handleChangeRowsPerPage}
+          page={state.pageNumber}
+        />
+      </Grid>
     </>
   );
 };

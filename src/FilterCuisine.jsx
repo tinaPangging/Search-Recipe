@@ -1,4 +1,4 @@
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 
@@ -13,7 +13,6 @@ import Grow from "@material-ui/core/Grow";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-
 
 const useStyles = makeStyles({
   btnCuisine: {
@@ -37,13 +36,13 @@ const useStyles = makeStyles({
   }
 });
 
-const checkDataExist = (data)=>{
-  if (data.totalResults  === 0) {
+const checkDataExist = data => {
+  if (data.totalResults === 0) {
     return false;
   } else {
     return true;
-  }   
-}
+  }
+};
 
 const FilterCuisine = props => {
   const { state, dispatch, value, setIsValid } = props;
@@ -56,6 +55,15 @@ const FilterCuisine = props => {
   };
 
   const handleMenuItemClick = (event, index) => {
+    dispatch({
+      type: "SET_POSTS",
+      data: state.data,
+      cuisine: cuisines[index],
+      selectedIndex: index,
+      pageNumber: state.pageNumber,
+      inputValue: value,
+      enter: state.enter
+    });
     if (
       state &&
       state.data &&
@@ -85,16 +93,16 @@ const FilterCuisine = props => {
           dispatch({ type: "SET_ERROR", data: error });
         });
     } else {
-      setIsValid(checkDataExist(state.data))
-      dispatch({
-        type: "SET_POSTS",
-        data: state.data,
-        cuisine: cuisines[index],
-        selectedIndex: index,
-        pageNumber: state.pageNumber,
-        inputValue: state.inputValue,
-        enter: state.enter
-      });
+      setIsValid(checkDataExist(state.data));
+      // dispatch({
+      //   type: "SET_POSTS",
+      //   data: state.data,
+      //   cuisine: cuisines[index],
+      //   selectedIndex: index,
+      //   pageNumber: state.pageNumber,
+      //   inputValue: state.inputValue,
+      //   enter: state.enter
+      // });
     }
     setOpen(false);
   };
