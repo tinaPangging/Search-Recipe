@@ -7,7 +7,7 @@
 * [Setup](#setup)
 
 ### General info
-This responsive application allows user to search for a recipe. Results(recipe name and image) are displayed with pagination. (only 5 recipes per page are shown). There is a dropdown which contains a list of cuisines. It provides the ability to filter the recipes by cuisine. Once the recipe is selected and clicked, it redirects to the detail page. The detail page has recipe name, image, health information(ex: vegan, glutan free), list of ingredients with measure and cooking instructions.
+This responsive application allows user to search for a recipe. Results(recipe name and image) are displayed with pagination. (only 5 recipes per page are shown). There is a dropdown which contains a list of cuisines. It provides the ability to filter the recipes by cuisine. Once the recipe is selected and clicked, it redirects to the detail page. The detail page has recipe name, image, health information(ex: vegan, glutan free), list of ingredients with measures and cooking instructions.
 	
 ### Technologies
 Project is created with:
