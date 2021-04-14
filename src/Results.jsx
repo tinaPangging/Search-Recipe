@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -35,9 +35,8 @@ const Results = props => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
-    // dispatch({ type: "UPDATE_POST", pageNumber: newPage});
     dispatch({
-      type: "SET_POSTS",
+      type: "SET_STATE",
       data: state.data,
       cuisine: state.cuisine,
       selectedIndex: state.selectedIndex,
@@ -46,11 +45,11 @@ const Results = props => {
     });
   };
 
+  //changes the global state on change of row per page
   const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    // dispatch({ type: "UPDATE_POST", pageNumber: 0 });
     dispatch({
-      type: "SET_POSTS",
+      type: "SET_STATE",
       data: state.data,
       cuisine: state.cuisine,
       selectedIndex: state.selectedIndex,

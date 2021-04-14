@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -74,6 +74,7 @@ const Recipe = props => {
     }
   };
 
+  //displays list of ingredients and measures
   const renderIngredients = recipe => {
     if (
       recipe &&
@@ -95,6 +96,7 @@ const Recipe = props => {
     }
   };
 
+  // displays cooking intrusctions
   const renderInstruction = recipe => {
     if (
       recipe &&

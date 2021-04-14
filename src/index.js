@@ -10,6 +10,8 @@ import { BrowserRouter } from "react-router-dom";
 import Store from "./stateManagement/Store";
 
 ReactDOM.render(
+  // wrapping Store around the App component makes
+  // the global state accessible anywhere in the application
   <Store>
     <BrowserRouter>
       <App history={history} />

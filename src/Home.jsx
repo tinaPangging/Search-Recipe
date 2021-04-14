@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -30,7 +30,7 @@ const Home = props => {
       //   .then(res => {
           
       //     dispatch({
-      //       type: "SET_POSTS",
+      //       type: "SET_STATE",
       //       data: res.data,
       //       pageNumber: 0,
       //       cuisine: "Select cuisine",
@@ -65,7 +65,7 @@ const Home = props => {
           <TextField
             onChange={e => {
               dispatch({
-                type: "SET_POSTS",
+                type: "SET_STATE",
                 // data: state.data,
                 data: [],
                 pageNumber: state.pageNumber,
@@ -92,7 +92,8 @@ const Home = props => {
           />
         </Grid>
       </Grid>
-
+      
+      {/* displays 5 recipes per page */}
       {state &&
         state.data &&
         state.data.results &&
@@ -106,12 +107,15 @@ const Home = props => {
             dispatch={dispatch}
           />
         )}
-
+      
+      {/* displays if there is no record of recipe */}
       {!isValid && (
         <Grid container justify="center" style={{ color: "white" , paddingTop:20,fontFamily: "Papyrus",  fontWeight: "bold"}}>
           Oops! No recipe found
         </Grid>
       )}
+
+      {/* shows the cuisine dropdown */}
       {state.enter && (
         <FilterCuisine
           state={state}

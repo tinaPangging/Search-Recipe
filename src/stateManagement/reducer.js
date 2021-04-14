@@ -1,6 +1,12 @@
+/***
+ * creating a reducer function which works with useREducer.
+ * The Reducer function takes state and an action so that the global state of the application can be accesible and manageable
+ * */ 
+
 const Reducer = (state, action) => {
+    
   switch (action.type) {
-    case "SET_POSTS":
+    case "SET_STATE":
       return {
         ...state,
         data: action.data,
@@ -9,18 +15,6 @@ const Reducer = (state, action) => {
         selectedIndex: action.selectedIndex,
         enter: action.enter,
         inputValue: action.inputValue
-      };
-    case "ENTER":
-      return {
-        ...state,
-        enter: action.enter,
-        
-      };
-    case "FILTER_CUISINE":
-      return {
-        ...state,
-        cuisine: action.cuisine,
-        selectedIndex: action.selectedIndex
       };
     case "SET_ERROR":
       return {

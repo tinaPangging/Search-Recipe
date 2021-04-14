@@ -36,6 +36,7 @@ const useStyles = makeStyles({
   }
 });
 
+//checks if recipe of a particular cuisine exists
 const checkDataExist = data => {
   if (data.totalResults === 0) {
     return false;
@@ -54,9 +55,10 @@ const FilterCuisine = props => {
     //  console.info(`You clicked ${cuisines[selectedIndex]}`);
   };
 
+  //displays recipes filtered by cuisine
   const handleMenuItemClick = (event, index) => {
     dispatch({
-      type: "SET_POSTS",
+      type: "SET_STATE",
       data: state.data,
       cuisine: cuisines[index],
       selectedIndex: index,
@@ -71,7 +73,7 @@ const FilterCuisine = props => {
       state.inputValue &&
       state.enter
     ) {
-      dispatch({ type: "SET_POSTS", data:state.data, cuisine: cuisines[index],selectedIndex: index, pageNumber: state.pageNumber,inputValue: value, enter: state.enter});
+      dispatch({ type: "SET_STATE", data:state.data, cuisine: cuisines[index],selectedIndex: index, pageNumber: state.pageNumber,inputValue: value, enter: state.enter});
       // axios
       //   .get(
       //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100&&cuisine=${cuisines[index]}`
@@ -79,7 +81,7 @@ const FilterCuisine = props => {
       //   .then(res => {
       //     console.log(res.data);
       //     dispatch({
-      //       type: "SET_POSTS",
+      //       type: "SET_STATE",
       //       data: res.data,
       //       pageNumber: state.pageNumber,
       //       cuisine: cuisines[index],
