@@ -72,37 +72,28 @@ const FilterCuisine = props => {
       state.enter
     ) {
       dispatch({ type: "SET_POSTS", data:state.data, cuisine: cuisines[index],selectedIndex: index, pageNumber: state.pageNumber,inputValue: value, enter: state.enter});
-      axios
-        .get(
-          `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100&&cuisine=${cuisines[index]}`
-        )
-        .then(res => {
-          console.log(res.data);
-          dispatch({
-            type: "SET_POSTS",
-            data: res.data,
-            pageNumber: state.pageNumber,
-            cuisine: cuisines[index],
-            selectedIndex: index,
-            enter: state.enter,
-            inputValue: state.inputValue
-          });
-          setIsValid(checkDataExist(res.data))
-        })
-        .catch(error => {
-          dispatch({ type: "SET_ERROR", data: error });
-        });
+      // axios
+      //   .get(
+      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100&&cuisine=${cuisines[index]}`
+      //   )
+      //   .then(res => {
+      //     console.log(res.data);
+      //     dispatch({
+      //       type: "SET_POSTS",
+      //       data: res.data,
+      //       pageNumber: state.pageNumber,
+      //       cuisine: cuisines[index],
+      //       selectedIndex: index,
+      //       enter: state.enter,
+      //       inputValue: state.inputValue
+      //     });
+      //     setIsValid(checkDataExist(res.data))
+      //   })
+      //   .catch(error => {
+      //     dispatch({ type: "SET_ERROR", data: error });
+      //   });
     } else {
       setIsValid(checkDataExist(state.data));
-      // dispatch({
-      //   type: "SET_POSTS",
-      //   data: state.data,
-      //   cuisine: cuisines[index],
-      //   selectedIndex: index,
-      //   pageNumber: state.pageNumber,
-      //   inputValue: state.inputValue,
-      //   enter: state.enter
-      // });
     }
     setOpen(false);
   };

@@ -23,26 +23,26 @@ const Home = props => {
 
   const onSearch = () => {
     if (state && state.inputValue) {
-      axios
-        .get(
-          `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
-        )
-        .then(res => {
+      // axios
+      //   .get(
+      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
+      //   )
+      //   .then(res => {
           
-          dispatch({
-            type: "SET_POSTS",
-            data: res.data,
-            pageNumber: 0,
-            cuisine: "Select cuisine",
-            selectedIndex: 0,
-            enter: true,
-            inputValue: state.inputValue
-          });
-        })
-        .catch(error => {
-          console.log(error);
-          dispatch({ type: "SET_ERROR", data: error });
-        });
+      //     dispatch({
+      //       type: "SET_POSTS",
+      //       data: res.data,
+      //       pageNumber: 0,
+      //       cuisine: "Select cuisine",
+      //       selectedIndex: 0,
+      //       enter: true,
+      //       inputValue: state.inputValue
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //     dispatch({ type: "SET_ERROR", data: error });
+      //   });
     }
   };
 
