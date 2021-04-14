@@ -5,7 +5,11 @@ import Reducer from './reducer'
 const initialState = {
     data: [],
     error: null,
-    pageNumber : 0
+    pageNumber : 0,
+    cuisine : "Select cuisine",
+    selectedIndex: 0,
+    inputValue: "",
+    enter: false
 };
 
 const Store = ({children}) => {

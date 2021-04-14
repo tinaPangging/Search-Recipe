@@ -12,7 +12,6 @@ import PropTypes from "prop-types";
 const useStyles1 = makeStyles(theme => ({
   root: {
     flexShrink: 0
-    //marginLeft: theme.spacing(2.5)
   }
 }));
 
@@ -98,7 +97,7 @@ const Pagination = props => {
   } = props;
 
   return (
-    <Grid>
+    <>
       <TablePagination
         rowsPerPageOptions={[]}
         count={testData.length}
@@ -106,11 +105,10 @@ const Pagination = props => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
         ActionsComponent={TablePaginationActions}
-        // colSpan={3}
         page={page}
         style={{ border: "white", color: "white" }}
       />
-    </Grid>
+    </>
   );
 };
 

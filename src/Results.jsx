@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,7 +8,6 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Pagination from "./Pagination";
-import { Context } from "./stateManagement/Store";
 
 const useStyles = makeStyles({
   media: {
@@ -30,22 +29,20 @@ const useStyles = makeStyles({
 
 const Results = props => {
   const classes = useStyles();
-  const { testData, history } = props;
-  const [state, dispatch] = useContext(Context);
-
+  const { testData, history, state,dispatch } = props;
   const theme = useTheme();
-
   const isXS = useMediaQuery(theme.breakpoints.down("xs"));
-
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
-    dispatch({ type: "UPDATE_POST", pageNumber: newPage });
+    // dispatch({ type: "UPDATE_POST", pageNumber: newPage});
+    dispatch({ type: "SET_POSTS", data:state.data,cuisine: state.cuisine,selectedIndex: state.selectedIndex, pageNumber: newPage, enter: state.enter});
   };
 
   const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    dispatch({ type: "UPDATE_POST", pageNumber: 0 });
+    // dispatch({ type: "UPDATE_POST", pageNumber: 0 });
+    dispatch({ type: "SET_POSTS", data:state.data,cuisine: state.cuisine,selectedIndex: state.selectedIndex, pageNumber: 0, enter: state.enter});
   };
 
   return (
@@ -85,7 +82,6 @@ const Results = props => {
                 />
                 <CardContent>
                   <Typography
-                    // variant="h6"
                     style={{ fontFamily: "Papyrus", fontWeight: "bold" }}
                   >
                     {row.title}

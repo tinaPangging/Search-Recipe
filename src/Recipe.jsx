@@ -1,35 +1,27 @@
 import React, { useState, useEffect ,useContext} from "react";
-import { makeStyles, useTheme, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import CancelIcon from "@material-ui/icons/Cancel";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 const useStyles = makeStyles({
-  media: {
-    // height: 350
-  },
+
   recipeTitle: {
     fontFamily: "Papyrus",
     fontWeight: "bold",
     fontSize: "40px"
-    // backgroundColor: 'yellow'
-    // height: "100%"
-    // marginTop: 30
   },
   text: {
     fontFamily: "Papyrus",
     fontWeight: "bold",
     fontSize: "25px"
-    //textAlign: "justify"
   },
   descriptionText: {
     fontFamily: "Papyrus"
-    // fontWeight: "bold",
-    // fontSize: "40px"
-    //textAlign: "justify"
   },
   healthInfo: {
     fontFamily: "Papyrus",
@@ -56,7 +48,7 @@ const Recipe = props => {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=98455f46bcf046ca83205228f66ecf56&includeNutrition=false`
+  //       `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=d533817c8f724f739cf8a6975796f939&includeNutrition=false`
   //     )
   //     .then(res => {
   //       console.log(res.data);

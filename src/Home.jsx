@@ -19,30 +19,33 @@ const useStyles = makeStyles({
 
 const Home = props => {
   const classes = useStyles();
-  const [initialState, setInitialState] = useState({ value: "", results: [] });
   const [enter, setEnter] = useState(false);
   const [state, dispatch] = useContext(Context);
+  const [isValid, setIsValid] = useState(true);
 
   const onSearch = () => {
-    // alert(initialState.value);
-    //  console.log(state,'state---before')
-    // axios
-    //   .get(
-    //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=98455f46bcf046ca83205228f66ecf56&query=${initialState.value}&&number=100`
-    //   )
-    //   .then(res => {
-    //     console.log(res.data);
-    //     dispatch({type: 'SET_POSTS', data: res.data});
-    //     dispatch({type: 'UPDATE_POST', pageNumber: 0});
-    //     setInitialState({ value: "", results: res.data.results });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     dispatch({type: 'SET_ERROR', data: error});
-    //   });
-    // setEnter(true)
-    //setInitialState({ value: "", results: testData.results });
-    // setInitialState({ value: "", results: testData.results });
+    if (state && state.inputValue) {
+      // axios
+      //   .get(
+      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
+      //   )
+      //   .then(res => {
+      //     console.log(res.data);
+      //     dispatch({
+      //       type: "SET_POSTS",
+      //       data: res.data,
+      //       pageNumber: 0,
+      //       cuisine: "Select cuisine",
+      //       selectedIndex: 0,
+      //       enter: true,
+      //       inputValue: state.inputValue
+      //     });
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //     dispatch({ type: "SET_ERROR", data: error });
+      //   });
+    }
   };
 
   return (
@@ -63,7 +66,17 @@ const Home = props => {
           </Grid>
           <TextField
             onChange={e => {
-              setInitialState({ ...initialState, value: e.target.value });
+              dispatch({
+                type: "SET_POSTS",
+                // data: state.data,
+                data: [],
+                pageNumber: state.pageNumber,
+                cuisine: "Select cuisine",
+                selectedIndex: 0,
+                enter: false,
+                inputValue: e.target.value
+              });
+              setIsValid(true);
             }}
             variant="outlined"
             fullWidth
@@ -77,6 +90,7 @@ const Home = props => {
             }}
             style={{ backgroundColor: "white", borderRadius: "10px" }}
             placeholder="Search recipe"
+            value={state.inputValue}
           />
         </Grid>
       </Grid>
@@ -90,9 +104,20 @@ const Home = props => {
             history={props.history}
             enter={enter}
             setEnter={setEnter}
+            state={state}
+            dispatch={dispatch}
           />
         )}
-      <FilterCuisine />
+
+      {!isValid && <p style={{ color: "white" }}>No recipe found</p>}
+      {state.enter && (
+        <FilterCuisine
+          state={state}
+          dispatch={dispatch}
+          value={state.inputValue}
+          setIsValid={setIsValid}
+        />
+      )}
     </Grid>
   );
 };
