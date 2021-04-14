@@ -5,6 +5,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Note](#note)
 
 ### General info
 This responsive application allows user to search for a recipe. Results(recipe name and image) are displayed with pagination. (only 5 recipes per page are shown). There is a dropdown which contains a list of cuisines. It provides the ability to filter the recipes by cuisine. Once the recipe is selected and clicked, it redirects to the detail page. The detail page has recipe name, image, health information(ex: vegan, glutan free), list of ingredients with measures and cooking instructions.
@@ -34,7 +35,7 @@ npm start
 ```
 Open [http://localhost:3000/home](http://localhost:3000/home) with your browser to see the result.
 
-### Notes
+### Note
 [Spoonacular API](https://spoonacular.com/food-api/docs) has limited number (150) of daily points, which means limited no of requests can be made per day with one API Key and 402 error will appear.  
 
 
