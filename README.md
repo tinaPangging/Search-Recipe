@@ -35,7 +35,7 @@ npm start
 Open [http://localhost:3000/home](http://localhost:3000/home) with your browser to see the result.
 
 ### Notes
-[Spoonacular API](https://spoonacular.com/food-api/docs) has limited number (150) of daily points, which means limited no of requests can be made per day with one API Key and 402 error will appear.  
+[Spoonacular API](https://spoonacular.com/food-api/docs) has limited number (150) of daily points, which means limited no of requests can be made per day with one API Key and once it hits the limit,402 error will appear.  
 
 
 

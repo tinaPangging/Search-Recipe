@@ -21,12 +21,12 @@ const useStyles = makeStyles({
     fontSize: "15px",
     textTransform: "none",
     color: "#636262",
-    backgroundColor: "white"
+    backgroundColor: "#ffffff"
   },
   arrowBtn: {
     borderTopRightRadius: "30px",
     borderBottomRightRadius: "30px",
-    backgroundColor: "white"
+    backgroundColor: "#ffffff"
   },
   btnGroup: {
     borderTopLeftRadius: "30px",
@@ -74,26 +74,25 @@ const FilterCuisine = props => {
       state.enter
     ) {
       dispatch({ type: "SET_STATE", data:state.data, cuisine: cuisines[index],selectedIndex: index, pageNumber: state.pageNumber,inputValue: value, enter: state.enter});
-      // axios
-      //   .get(
-      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100&&cuisine=${cuisines[index]}`
-      //   )
-      //   .then(res => {
-      //     console.log(res.data);
-      //     dispatch({
-      //       type: "SET_STATE",
-      //       data: res.data,
-      //       pageNumber: state.pageNumber,
-      //       cuisine: cuisines[index],
-      //       selectedIndex: index,
-      //       enter: state.enter,
-      //       inputValue: state.inputValue
-      //     });
-      //     setIsValid(checkDataExist(res.data))
-      //   })
-      //   .catch(error => {
-      //     dispatch({ type: "SET_ERROR", data: error });
-      //   });
+      axios
+        .get(
+          `https://api.spoonacular.com/recipes/complexSearch?&apiKey=da71ab606f25464abc2a5191ccec37d6&query=${state.inputValue}&&number=100&&cuisine=${cuisines[index]}`
+        )
+        .then(res => {
+          dispatch({
+            type: "SET_STATE",
+            data: res.data,
+            pageNumber: state.pageNumber,
+            cuisine: cuisines[index],
+            selectedIndex: index,
+            enter: state.enter,
+            inputValue: state.inputValue
+          });
+          setIsValid(checkDataExist(res.data))
+        })
+        .catch(error => {
+          dispatch({ type: "SET_ERROR", data: error });
+        });
     } else {
       setIsValid(checkDataExist(state.data));
     }

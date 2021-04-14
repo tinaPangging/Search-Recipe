@@ -40,14 +40,14 @@ const TablePaginationActions = props => {
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
-        style={{ color: "white" }}
+        style={{ color: "#ffffff" }}
       >
         {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
       </IconButton>
       <IconButton
         onClick={handleBackButtonClick}
         disabled={page === 0}
-        style={{ color: "white" }}
+        style={{ color: "#ffffff" }}
       >
         {theme.direction === "rtl" ? (
           <KeyboardArrowRight />
@@ -58,7 +58,7 @@ const TablePaginationActions = props => {
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        style={{ color: "white" }}
+        style={{ color: "#ffffff" }}
       >
         {theme.direction === "rtl" ? (
           <KeyboardArrowLeft />
@@ -70,7 +70,7 @@ const TablePaginationActions = props => {
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
-        style={{ color: "white" }}
+        style={{ color: "#ffffff" }}
       >
         {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
       </IconButton>
@@ -87,7 +87,6 @@ TablePaginationActions.propTypes = {
 
 const Pagination = props => {
   const {
-    match,
     testData,
     rowsPerPage,
     handleChangePage,
@@ -105,7 +104,7 @@ const Pagination = props => {
         onChangeRowsPerPage={handleChangeRowsPerPage}
         ActionsComponent={TablePaginationActions}
         page={page}
-        style={{ border: "white", color: "white" }}
+        style={{ border: "#ffffff", color: "#ffffff" }}
       />
     </>
   );

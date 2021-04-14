@@ -23,31 +23,31 @@ const Home = props => {
 
   const onSearch = () => {
     if (state && state.inputValue) {
-      // axios
-      //   .get(
-      //     `https://api.spoonacular.com/recipes/complexSearch?&apiKey=d533817c8f724f739cf8a6975796f939&query=${state.inputValue}&&number=100`
-      //   )
-      //   .then(res => {
+      axios
+        .get(
+          `https://api.spoonacular.com/recipes/complexSearch?&apiKey=da71ab606f25464abc2a5191ccec37d6&query=${state.inputValue}&&number=100`
+        )
+        .then(res => {
           
-      //     dispatch({
-      //       type: "SET_STATE",
-      //       data: res.data,
-      //       pageNumber: 0,
-      //       cuisine: "Select cuisine",
-      //       selectedIndex: 0,
-      //       enter: true,
-      //       inputValue: state.inputValue
-      //     });
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //     dispatch({ type: "SET_ERROR", data: error });
-      //   });
+          dispatch({
+            type: "SET_STATE",
+            data: res.data,
+            pageNumber: 0,
+            cuisine: "Select cuisine",
+            selectedIndex: 0,
+            enter: true,
+            inputValue: state.inputValue
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          dispatch({ type: "SET_ERROR", data: error });
+        });
     }
   };
 
   return (
-    <Grid style={{ backgroundColor: "black" }}>
+    <Grid style={{ backgroundColor: "#000000" }}>
       <Grid
         container
         justify="center"
@@ -60,7 +60,7 @@ const Home = props => {
             justify="center"
             container
           >
-            <img src="recipe.png" width="100" height="100" />
+            <img src="recipe.png" width="100" height="100" alt="" />
           </Grid>
           <TextField
             onChange={e => {
@@ -86,9 +86,9 @@ const Home = props => {
                 </InputAdornment>
               )
             }}
-            style={{ backgroundColor: "white", borderRadius: "10px" }}
+            style={{ backgroundColor: "#ffffff", borderRadius: "10px" }}
             placeholder="Search recipe"
-            value={state.inputValue}
+            // value={state.inputValue}
           />
         </Grid>
       </Grid>
@@ -110,7 +110,7 @@ const Home = props => {
       
       {/* displays if there is no record of recipe */}
       {!isValid && (
-        <Grid container justify="center" style={{ color: "white" , paddingTop:20,fontFamily: "Papyrus",  fontWeight: "bold"}}>
+        <Grid container justify="center" style={{ color: "#ffffff" , paddingTop:20,fontFamily: "Papyrus",  fontWeight: "bold"}}>
           Oops! No recipe found
         </Grid>
       )}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect,useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,6 +8,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Context } from "./stateManagement/Store";
 
 const useStyles = makeStyles({
   recipeTitle: {
@@ -41,27 +42,26 @@ const useStyles = makeStyles({
 const Recipe = props => {
   const classes = useStyles();
   const { match } = props;
-
+  const [state, dispatch] = useContext(Context);
   const [recipe, setRecipe] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axios
-  //     .get(
-  //       `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=d533817c8f724f739cf8a6975796f939&includeNutrition=false`
-  //     )
-  //     .then(res => {
-  //       console.log(res.data);
-  //       setRecipe(res.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // }, [match.params.ID]);
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/${match.params.ID}/information?apiKey=da71ab606f25464abc2a5191ccec37d6&includeNutrition=false`
+      )
+      .then(res => {
+        setRecipe(res.data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [match.params.ID]);
 
   const removeSpecialCharacter = string => {
     string = string.replace(/\u2013|\u2014/g, "");
@@ -124,7 +124,7 @@ const Recipe = props => {
   const vegOrNonVeg = vegetarian => {
     return (
       <FiberManualRecordIcon
-        fontSize="medium"
+        fontSize="small"
         className={vegetarian ? classes.veg : classes.nonVeg}
       />
     );
@@ -137,8 +137,8 @@ const Recipe = props => {
           container
           style={{
             padding: 40,
-            color: "white",
-            background: "linear-gradient(to left , black, #5e5c5c)"
+            color: "#ffffff",
+            background: "linear-gradient(to left , #000000, #5e5c5c)"
           }}
           spacing={6}
           className={classes.container}
@@ -244,7 +244,7 @@ const Recipe = props => {
         </Grid>
       ) : (
          <Grid container justify="center" style={{ paddingTop:100}}>
-            <CircularProgress style={{color:'white'}}/>
+            <CircularProgress style={{color:'#ffffff'}}/>
         </Grid>
        
       )}
